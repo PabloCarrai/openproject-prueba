@@ -1,0 +1,14 @@
+# Configuración de Base de Datos
+POSTGRES_DB=openproject
+POSTGRES_USER=openproject
+POSTGRES_PASSWORD=clavesegura
+
+# Configuración de OpenProject
+OPENPROJECT_HOST__NAME=localhost:8080
+OPENPROJECT_HTTPS=false
+PORT=8080
+
+# Clave secreta larga (Sustitúyela por tus 128 caracteres aleatorios si lo deseas)
+SECRET_KEY_BASE=otraclavesegura
+OPENPROJECT_SECRET__KEY__BASE=otramasymassegura
+

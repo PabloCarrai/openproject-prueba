@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: openproject_db
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks:
+      - openproject_network
+    restart: always
+
+  openproject:
+    image: openproject/openproject:17
+    container_name: openproject_app
+    environment:
+      OPENPROJECT_DB__TYPE: "postgres"
+      OPENPROJECT_DB__HOST: "db"
+      OPENPROJECT_DB__PORT: "5432"
+      OPENPROJECT_DB__DATABASE: "${POSTGRES_DB}"
+      OPENPROJECT_DB__USERNAME: "${POSTGRES_USER}"
+      OPENPROJECT_DB__PASSWORD: "${POSTGRES_PASSWORD}"
+      OPENPROJECT_HOST__NAME: "${OPENPROJECT_HOST__NAME}"
+      OPENPROJECT_HTTPS: "${OPENPROJECT_HTTPS}"
+      # Pasamos ambas variables leídas directamente desde tu archivo .env
+      SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
+      OPENPROJECT_SECRET__KEY__BASE: "${OPENPROJECT_SECRET__KEY__BASE}"
+    volumes:
+      - ./data/assets:/var/openproject/assets
+    networks:
+      - openproject_network
+    ports:
+      - "${PORT:-8080}:80"
+    depends_on:
+      - db
+    restart: always
+
+networks:
+  openproject_network:
+    driver: bridge
