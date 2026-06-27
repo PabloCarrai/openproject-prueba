@@ -7,20 +7,22 @@ Sigue estos pasos para clonar el repositorio, configurar los directorios necesar
 
 ```bash
 # 1. Clonar el repositorio e ingresar al directorio
-git clone [https://github.com/PabloCarrai/openproject-prueba.git](https://github.com/PabloCarrai/openproject-prueba.git)
+git clone https://github.com/PabloCarrai/openproject-prueba.git
+
+# 2 Ingresa a la carpeta del proyecto
 cd openproject-prueba
 
-# 2. Crear los directorios para persistencia de datos y assets
+# 3. Crear los directorios para persistencia de datos y assets
 mkdir -p ./data/postgres ./data/assets
 
-# 3. Asignar los permisos correctos al directorio de datos (Usuario 1000:1000)
+# 4. Asignar los permisos correctos al directorio de datos (Usuario 1000:1000)
 sudo chown -R 1000:1000 ./data
 
-# 4. Levantar los contenedores en segundo plano (detached mode)
+# 5. Levantar los contenedores en segundo plano (detached mode)
 docker-compose up -d db
 
-# 5. Aguardo a que la db levante como corresponde
+# 6. Aguardo a que la db levante como corresponde
 sleep 20
 
-# 6. Levantar los contenedores restantes
+# 7. Levantar los contenedores restantes
 docker-compose up -d
