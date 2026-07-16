@@ -1,3 +1,13 @@
+# Configuracion envio de correo. 
+OPENPROJECT_EMAIL__DELIVERY__METHOD=smtp
+OPENPROJECT_SMTP__ADDRESS=://gmail.com
+OPENPROJECT_SMTP__PORT=587
+OPENPROJECT_SMTP__DOMAIN=gmail.com
+OPENPROJECT_SMTP__AUTHENTICATION=plain
+OPENPROJECT_SMTP__ENABLE__STARTTLS__AUTO=true
+OPENPROJECT_SMTP__USER__NAME=tu-correo@gmail.com
+OPENPROJECT_SMTP__PASSWORD=abcd efgh ijkl mnop
+
 # Configuración de Base de Datos
 POSTGRES_DB=openproject
 POSTGRES_USER=openproject

@@ -26,7 +26,14 @@ services:
       OPENPROJECT_HTTPS: "${OPENPROJECT_HTTPS}"
       # Pasamos ambas variables leídas directamente desde tu archivo .env
       SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
+      #	Pasamos la configuracion del envio de correo
       OPENPROJECT_SECRET__KEY__BASE: "${OPENPROJECT_SECRET__KEY__BASE}"
+      OPENPROJECT_EMAIL__DELIVERY__METHOD: "${OPENPROJECT_EMAIL__DELIVERY__METHOD}"
+      OPENPROJECT_SMTP__USER__NAME: "${OPENPROJECT_SMTP__USER__NAME}"
+      OPENPROJECT_SMTP__ADDRESS: "${OPENPROJECT_SMTP__ADDRESS}"
+      OPENPROJECT_SMTP__PORT: "${OPENPROJECT_SMTP__PORT}"
+      OPENPROJECT_SMTP__DOMAIN: "${OPENPROJECT_SMTP__DOMAIN}"
+      OPENPROJECT_SMTP__AUTHENTICATION: "${OPENPROJECT_SMTP__AUTHENTICATION}"
     volumes:
       - ./data/assets:/var/openproject/assets
     networks:
